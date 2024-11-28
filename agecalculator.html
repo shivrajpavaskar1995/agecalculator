@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Age calculator</title>
+
+<style>
+body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+</style>
+
+</head>
+
+<body>
+<div class="container">
+    <h1>Age Calculator</h1>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Calculate Age</button>
+   
+   
+   
+    <div id="result"></div>
+    <script>
+function calculateAge(){
+    const birthdateInput=document.getElementById('birthdate').value;
+    if(!birthdateInput){
+        document.getElementById('result').innerHTML='Please enter your birthdate';
+        return;
+    }
+    const birthdate=new Date(birthdateInput);
+    const today=new Date();
+    let age= today.getFullYear()-birthdate.getFullYear();
+    const monthDifference=today.getMonth()-birthdate.getMonth();
+    if(monthDifference<0||(monthDifference==0 && today.getDate()<birthdate.getDate()))
+    {
+        age--;
+    }
+    document.getElementById('result').innerHTML=`You are ${age} years old.`;
+}
+
+    </script>
+</body>
+
+
+
+
+</html>
